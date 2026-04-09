@@ -5,19 +5,18 @@ import torch
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import os
-
+from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-    "http://localhost:3000",
-    "https://localhost:3000",
-    ],  
-    allow_credentials=True,
+    allow_origins=["*"],   # allow all for now
+    allow_credentials=False,  # 🔥 IMPORTANT CHANGE
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+
 
 # ✅ Request Body Model
 class RequestData(BaseModel):
